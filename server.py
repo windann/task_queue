@@ -1,4 +1,3 @@
-from queue import Queue
 import socket
 
 from storage import add_in_storage, find_id_in_queue, ack, get_from_queue

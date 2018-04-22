@@ -29,8 +29,7 @@ def run():
 
             elif command == b'GET':
 
-                q = Queue()
-                current_connection.send(get_from_queue(queue, q))
+                current_connection.send(get_from_queue(queue))
 
             elif command == b'ACK':
 

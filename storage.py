@@ -61,7 +61,7 @@ def ack(queue, id):
             return b'NO'
 
 
-def get_from_queue(queue, q):
+def get_from_queue(queue):
     with shelve.open('data_storage') as d:
 
         tasks = []

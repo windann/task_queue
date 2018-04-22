@@ -59,7 +59,7 @@ class ServerBaseTest(TestCase):
 
         self.assertEqual(first_task_id + b' 3 123', self.send(b'GET 1'))
         self.assertEqual(b'NONE', self.send(b'GET 1'))
-        time.sleep(10)
+        time.sleep(300)
         self.assertEqual(first_task_id + b' 3 123', self.send(b'GET 1'))
         self.assertEqual(b'YES', self.send(b'ACK 1 ' + first_task_id))
 

@@ -69,26 +69,23 @@ def get_from_queue(queue, q):
         if queue in d.keys() and len(d[queue]) != 0:
 
             for task in d[queue]:
-                tasks.append(task)
 
                 if task.get_time is not None and datetime.datetime.now() - task.get_time > datetime.timedelta(seconds=10):
                     task.process = False
                     task.get_time = None
 
-                if task.process == True:
+                if task.process is True:
                     continue
 
-                q.put(task)
+                tasks.append(task)
 
-            if q.qsize() != 0:
-                get_task = q.get()
-
+            if len(tasks) != 0:
+                get_task = tasks[0]
             else:
-
                 return b'NONE'
 
-            tasks[0].process = True
-            tasks[0].get_time = datetime.datetime.now()
+            get_task.process = True
+            get_task.get_time = datetime.datetime.now()
 
             d[queue] = tasks
 

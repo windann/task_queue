@@ -21,23 +21,19 @@ def run():
             queue = data_list[1].decode('utf-8')
 
             if command == b'ADD':
-
                 length = data_list[2].decode('utf-8')
                 task_data = data_list[3].decode('utf-8')
 
-                current_connection.send(bytes(add_in_storage(queue, task_data, length)+ '\n', 'utf8'))
+                current_connection.send(add_in_storage(queue, task_data, length))
 
             elif command == b'GET':
-
                 current_connection.send(get_from_queue(queue))
 
             elif command == b'ACK':
-
                 id = data_list[2].decode('utf-8')
                 current_connection.send(ack(queue, id))
 
             elif command == b'IN':
-
                 id = data_list[2].decode('utf-8')
                 current_connection.send(find_id_in_queue(queue, id))
 

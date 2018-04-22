@@ -33,7 +33,7 @@ def add_in_storage(queue, task_data, length):
             tasks.append(task)
             d[queue] = tasks
 
-    return str(task.id)
+    return bytes(str(task.id) + '\n', 'utf8')
 
 
 def find_id_in_queue(queue, id):

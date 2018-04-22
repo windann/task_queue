@@ -70,7 +70,9 @@ def get_from_queue(queue, q):
 
             for task in d[queue]:
 
-                if task.get_time is not None and datetime.datetime.now() - task.get_time > datetime.timedelta(minutes=5):
+                # для удобства проверки 5 минут заменено на 10 секунд
+                #if task.get_time is not None and datetime.datetime.now() - task.get_time > datetime.timedelta(minutes=5):
+                if task.get_time is not None and datetime.datetime.now() - task.get_time > datetime.timedelta(seconds=10):
                     task.process = False
                     task.get_time = None
 
